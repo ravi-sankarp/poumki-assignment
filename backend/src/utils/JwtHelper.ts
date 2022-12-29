@@ -1,15 +1,13 @@
 import * as jwt from 'jsonwebtoken';
-import { promisify } from 'node:util';
 
 class JwtHelper {
   // function for generating new jwt token
   generateToken(id: string): string {
     const jwtOptions: jwt.SignOptions = {
       expiresIn: process.env.JWT_EXPIRY!,
-      algorithm: 'RS256'
     };
 
-    return jwt.sign({ id }, process.env.JWT_ACCESS_TOKEN!, jwtOptions);
+    return jwt.sign({ id }, process.env.JWT_ACCESS_TOKEN_SECRET!, jwtOptions);
   }
 
   // function for verifying jwt token

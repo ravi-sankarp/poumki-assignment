@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 interface UserInterface {
   _id: string;
   firstName: string;

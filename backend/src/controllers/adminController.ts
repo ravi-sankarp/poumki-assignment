@@ -7,13 +7,7 @@ import AppError from '../utils/AppError';
 import { HttpStatus } from '../Types/HttpStatus';
 import passwordHelper from '../utils/PasswordHelper';
 import userService from '../services/userService';
-import { string } from 'joi';
-
-//generate jwt token
-const generateToken = (id: string): string =>
-  jwt.sign({ id }, process.env.JWT_ACCESS_TOKEN as string, {
-    expiresIn: process.env.JWT_EXPIRY
-  });
+import jwtHelper from '../utils/JwtHelper';
 
 const adminLogin = asyncHandler(async (req: Request, res: Response) => {
   const { email, password }: { email: string; password: string } = req.body;
@@ -42,7 +36,7 @@ const adminLogin = asyncHandler(async (req: Request, res: Response) => {
   // sending jwt token as response
   res.json({
     status: 'Success',
-    token: generateToken(user._id),
+    token: jwtHelper.generateToken(user._id),
     admin: true
   });
 });
@@ -75,7 +69,6 @@ const deleteUser = asyncHandler(async (req: Request, res: Response) => {
 
 const getSingleUserData = asyncHandler(async (req: Request, res: Response) => {
   const userDetails: UserInterface | null = await userService.findUserById(req.params.id);
-  console.log({ userDetails });
   res.json({
     id: userDetails?._id,
     firstName: userDetails?.firstName,

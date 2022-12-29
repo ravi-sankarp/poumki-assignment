@@ -22,13 +22,13 @@ class UserService {
 
   // find all users
   async findAllUsers() {
-    const users = await User.find().select('-__v');
+    const users = await User.find({ admin: false }).select('-__v').sort({ createdAt: -1 });
     return users;
   }
 
   // check if email already exists while updating
   async checkEmailExists(email: string, id: string) {
-    const user = await User.findOne({ email, _id: id });
+    const user = await User.findOne({ email, _id: { $ne: id } });
     return user;
   }
 
@@ -40,12 +40,19 @@ class UserService {
 
   // update data of an existing user
   async updateUserDetails(id: string, user: Omit<IUser, '_id'>) {
-    await User.findByIdAndUpdate(id, user, { runValidators: true });
+    const updatedData = await User.findByIdAndUpdate(id, user, { runValidators: true, new: true });
+    return updatedData;
   }
 
   // update data of an existing user
   async deleteUserById(id: string) {
     await User.findByIdAndDelete(id);
+  }
+
+  // delete all users
+  async deleteAllUsers() {
+    const users = await User.deleteMany({ admin: false });
+    return users;
   }
 }
 

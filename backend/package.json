@@ -27,6 +27,7 @@
     "mongodb": "^4.9.0",
     "mongoose": "^6.7.2",
     "morgan": "~1.9.1",
+    "socket.io": "^4.5.4",
     "validator": "^13.7.0"
   },
   "devDependencies": {

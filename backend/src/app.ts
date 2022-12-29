@@ -28,7 +28,7 @@ app.disable('x-powered-by');
 //setting up cors
 app.use(
   cors({
-    origin: 'http://localhost:3000'
+    origin: 'http://localhost:5173'
   })
 );
 

@@ -50,8 +50,6 @@ export default (err: AppError, req: Request, res: Response, next: NextFunction) 
     message: err.message,
     name: err.name
   };
-  console.log(err.isOperational);
-
   if (error.name === 'CastError') error = handleCastErrorDB(error);
   if (error.name === 'JsonWebTokenError') error = handleJWTError();
   if (error.name === 'TokenExpiredError') error = handleJWTExpiredError();
