@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === 'development') {
 if(process.env.NODE_ENV==='production'){
  app.use(
    cors({
-     origin: 'https://d2i5xw3lsq5xq7.cloudfront.net'
+     origin: 'http://d2i5xw3lsq5xq7.cloudfront.net'
    })
  );
 }
