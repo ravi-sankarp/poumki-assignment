@@ -6,7 +6,6 @@ import UserHome from './pages/UserHome';
 import Register from './pages/Register';
 import AdminLogin from './pages/AdminLogin';
 import AdminHome from './pages/AdminHome';
-import AdminAddUser from './pages/AdminAddUser';
 
 function App() {
   return (
@@ -31,10 +30,6 @@ function App() {
         <Route
           path="/admin/home"
           element={<AdminHome />}
-        />
-        <Route
-          path="/admin/addnew"
-          element={<AdminAddUser />}
         />
       </Routes>
       <ToastContainer

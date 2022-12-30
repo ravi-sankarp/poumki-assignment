@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect,  useState } from 'react';
 import { useSelector } from 'react-redux';
 import io, { Socket } from 'socket.io-client';
 import { useNavigate } from 'react-router-dom';
@@ -17,12 +17,12 @@ function UserHome() {
   const [userData, setUserData] = useState<IUserInterface | null>(null);
   const [socket, setSocket] = useState<Socket>();
   const navigate = useNavigate();
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!token) {
       toast.warning('Login to continue', {
         position: 'bottom-center',
         autoClose: 2000,
-        hideProgressBar: false,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,

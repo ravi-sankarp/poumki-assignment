@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "s3-deploy": "aws s3 sync dist/ s3://poumki-assignment-react-frontend",
+    "client-cloudfront-invalidation": "aws cloudfront create-invalidation --distribution-id E3SK4DBD9NDTU --paths '/*'",
+    "deploy": "npm run build && npm run s3-deploy && npm run client-cloudfront-invalidation",
     "preview": "vite preview"
   },
   "dependencies": {

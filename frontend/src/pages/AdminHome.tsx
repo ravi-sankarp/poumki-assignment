@@ -9,7 +9,7 @@ import {
   DialogTitle,
   Typography
 } from '@mui/material';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import io, { Socket } from 'socket.io-client';
@@ -44,7 +44,7 @@ function AdminHome() {
 
   const [value, setValue] = useState(search.get('selected') ?? 'dashboard');
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!token) {
       navigate('/admin/login');
     }
