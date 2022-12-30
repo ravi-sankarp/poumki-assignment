@@ -1,8 +1,9 @@
 import { config } from 'dotenv';
 import { createServer } from 'node:http';
+import * as path from 'node:path'
 
 //linking config file path
-config({ path: './config.env' });
+config({ path: path.join(__dirname,'../config.env') });
 
 import app from './app';
 import { protectSocket } from './middlewares/protectSocket';
