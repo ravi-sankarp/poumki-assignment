@@ -26,11 +26,21 @@ app.use(cookieParser());
 app.disable('x-powered-by');
 
 //setting up cors
-app.use(
-  cors({
-    origin: 'http://localhost:5173'
-  })
-);
+if (process.env.NODE_ENV === 'development') {
+  app.use(
+    cors({
+      origin: 'http://localhost:5173'
+    })
+  );
+}
+
+if(process.env.NODE_ENV==='production'){
+ app.use(
+   cors({
+     origin: 'https://d2i5xw3lsq5xq7.cloudfront.net'
+   })
+ );
+}
 
 //setting up database connection
 dbConnection();

@@ -29,6 +29,8 @@ import { SocketArgument } from '../Types/SocketCallback';
 import AddUserForm from '../components/Admin/AddUserForm';
 import TaskTab from '../components/Admin/TaskTab';
 
+const baseUrl = process.env.NODE_ENV === 'production' ? '52.59.237.207' : 'localhost:8000';
+
 function AdminHome() {
   const { token } = useSelector(selectAdminAuth);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -66,7 +68,7 @@ function AdminHome() {
   }, [search, setSearch, value]);
 
   useEffect(() => {
-    const socket = io('http://localhost:8000', {
+    const socket = io(baseUrl, {
       auth: { token }
     });
 
