@@ -9,7 +9,8 @@ import { IUserInterface } from '../Types/UserInterface';
 import useApiErrorHandler from '../hooks/useApiErrorHandler';
 import Spinner from '../components/Spinner';
 
-const baseUrl = process.env.NODE_ENV === 'production' ? '52.59.237.207' : 'localhost:8000';
+const baseUrl =
+  process.env.NODE_ENV === 'production' ? 'http://52.59.237.207' : 'localhost:8000';
 
 function UserHome() {
   const { token } = useSelector(selectUserAuth);
@@ -37,6 +38,7 @@ function UserHome() {
 
   useEffect(() => {
     const socket = io(baseUrl, {
+      transports: ['websocket'],
       auth: { token }
     });
 
