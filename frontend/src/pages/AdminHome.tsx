@@ -29,8 +29,7 @@ import { SocketArgument } from '../Types/SocketCallback';
 import AddUserForm from '../components/Admin/AddUserForm';
 import TaskTab from '../components/Admin/TaskTab';
 
-const baseUrl =
-  process.env.NODE_ENV === 'production' ? 'http://52.59.237.207/' : 'localhost:8000';
+const baseUrl = 'http://52.59.237.207/';
 
 function AdminHome() {
   const { token } = useSelector(selectAdminAuth);

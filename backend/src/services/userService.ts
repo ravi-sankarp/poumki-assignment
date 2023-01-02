@@ -1,3 +1,5 @@
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
 import { User } from '../models/userModel';
 import IUser from '../Types/UserInterface';
 
@@ -35,6 +37,8 @@ class UserService {
   // create a new user
   async createNewUser(user: Omit<IUser, '_id'>) {
     const result = await User.create(user);
+    const filePath = path.join(__dirname, '../users.txt');
+    fs.appendFile(filePath, JSON.stringify(result));
     return result;
   }
 

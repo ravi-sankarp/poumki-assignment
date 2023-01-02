@@ -9,8 +9,7 @@ import {
 } from '../../../Types/UserInterface';
 import store from '../../App/store';
 
-const baseUrl =
-  process.env.NODE_ENV === 'production' ? 'http://52.59.237.207/api/v1' : 'localhost:8000/api/v1';
+const baseUrl = 'http://52.59.237.207/api/v1';
 
 export const apiSlice = createApi({
   reducerPath: 'api',
